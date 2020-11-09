@@ -104,12 +104,12 @@ export default function Home() {
 					</div>
 					<div>
 						<label
-							htmlFor="people"
+							htmlFor="dates"
 							className="block text-xs uppercase tracking-wide text-gray-700 font-medium mb-1"
 						>
 							Available
 						</label>
-						<select name="" id="people" className="block form-select w-full">
+						<select name="" id="dates" className="block form-select w-full">
 							<option value="1">Whenever</option>
 							<option value="1">1</option>
 						</select>
