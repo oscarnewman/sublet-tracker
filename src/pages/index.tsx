@@ -82,7 +82,13 @@ function SubletCard({ sublet }: Props) {
 		>
 			<div>
 				<div className="w-full h-48 relative">
-					<Image src={sublet.image} layout="fill" className="object-cover" />
+					<Image
+						src={sublet.image}
+						layout="fill"
+						className="object-cover"
+						priority
+						sizes="(max-width: 3000px) 250px"
+					/>
 				</div>
 				<div className="p-4">
 					<div className="flex text-gray-600 text-sm mb-2 space-x-4">
