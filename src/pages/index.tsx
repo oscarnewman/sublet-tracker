@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 interface Sublet {
 	image: string
 	bedrooms: number
@@ -37,6 +39,38 @@ const sublets: Sublet[] = [
 	},
 ]
 
+const Calendar = ({ size }) => (
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		fill="none"
+		viewBox="0 0 24 24"
+		stroke="currentColor"
+		className={`w-${size}`}
+	>
+		<path
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			strokeWidth={2}
+			d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+		/>
+	</svg>
+)
+
+const Arrow = ({ className }) => (
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		viewBox="0 0 20 20"
+		fill="currentColor"
+		className={className}
+	>
+		<path
+			fillRule="evenodd"
+			d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+			clipRule="evenodd"
+		/>
+	</svg>
+)
+
 interface Props {
 	sublet: Sublet
 }
@@ -47,15 +81,16 @@ function SubletCard({ sublet }: Props) {
 			className="rounded-lg overflow-hidden border-black border-2 h-full flex flex-col justify-between"
 		>
 			<div>
-				<div
-					style={{ backgroundImage: `url(${sublet.image})` }}
-					className="bg-cover w-full h-48"
-				/>
+				<div className="w-full h-48 relative">
+					<Image src={sublet.image} layout="fill" className="object-cover" />
+				</div>
 				<div className="p-4">
 					<div className="flex text-gray-600 text-sm mb-2 space-x-4">
-						<p>
-							<i className="fas fa-calendar-alt text-gray-400 mr-2" />
-							{sublet.startMonth} through {sublet.endMonth}
+						<p className="flex items-center space-x-2">
+							<Calendar size={4} />
+							<span>
+								{sublet.startMonth} through {sublet.endMonth}
+							</span>
 						</p>
 					</div>
 					<p className="font-bold text-lg leading-tight mb-2">
@@ -67,7 +102,7 @@ function SubletCard({ sublet }: Props) {
 				<p>
 					${sublet.rent} <span className="text-gray-500">/month</span>
 				</p>
-				<i className="fas fa-arrow-right" />
+				<Arrow className="w-4" />
 			</p>
 		</a>
 	)
